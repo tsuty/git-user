@@ -60,6 +60,10 @@ func gitUserApp() *cli.App {
 					Usage: "format (name: $n, email: $e, signingkey: $s, url: $u)",
 					Value: "[$e]",
 				},
+				cli.BoolFlag{
+					Name:  "quiet, q",
+					Usage: "Hide message",
+				},
 			},
 			Action: func(c *cli.Context) error {
 				promptAction(c)
@@ -155,15 +159,22 @@ func promptAction(c *cli.Context) {
 		return
 	}
 
+	quiet := c.Bool("quiet")
 	config := loadConfig()
 
 	url, err := getRemoteOriginUrl()
 	if err != nil {
+		if !quiet {
+			fmt.Fprintf(c.App.Writer, "[git-user:%s]", err.Error())
+		}
 		return
 	}
 
 	u, err := config.findUserByUrl(url)
 	if err != nil {
+		if !quiet {
+			fmt.Fprintf(c.App.Writer, "[git-user:%s]", err.Error())
+		}
 		return
 	}
 
