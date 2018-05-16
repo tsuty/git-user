@@ -1,5 +1,7 @@
 # git-user
 
+[![Build Status](https://travis-ci.org/tsuty/git-user.svg?branch=master)](https://travis-ci.org/tsuty/git-user)
+
 git client multi-user support command.
 
 We use some git hosting services. But we use not always same user name and email. 
