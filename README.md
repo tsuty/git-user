@@ -10,7 +10,7 @@ We use some git hosting services. But we use not always same user name and email
 ## Install
 
 ```bash
-go install github.com/tsuty/git-user
+go get -u github.com/tsuty/git-user
 ```
 
 ## Example
