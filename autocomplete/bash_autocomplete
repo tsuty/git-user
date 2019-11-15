@@ -1,12 +1,11 @@
 #!/bin/bash
 
-_cli_bash_autocomplete() {
-    local cur opts base
-    COMPREPLY=()
-    cur="${COMP_WORDS[COMP_CWORD]}"
-    opts=$( ${COMP_WORDS[@]:0:$COMP_CWORD} --generate-bash-completion )
-    COMPREPLY=( $(compgen -W "${opts}" -- ${cur}) )
-    return 0
+_git_user_autocomplete() {
+	args=("${COMP_WORDS[@]:1:$COMP_CWORD}")
+
+	local IFS=$'\n'
+	COMPREPLY=($(GO_FLAGS_COMPLETION=1 ${COMP_WORDS[0]} "${args[@]}"))
+	return 1
 }
 
-complete -F _cli_bash_autocomplete git-user
+complete -F _git_user_autocomplete git-user
