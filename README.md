@@ -51,12 +51,12 @@ source ~/.git-prompt.sh
 PS1='[\u@\h \W$(__git_ps1 " (%s)")]\$ '  
 ```
 
-Useful command `git-user prompt`.
+Useful command `git-user print`.
 
 this command show local conf for prompt. and sync git-user conf to local conf automatically.
 
 ```bash
-PS1='[\u@\h \W$(__git_ps1 " (%s)")]$(git-user prompt)\$ '
+PS1='[\u@\h \W$(__git_ps1 " (%s)")]$(git-user print)\$ '
 ```
 
 ## bash complete
