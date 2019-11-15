@@ -185,7 +185,7 @@ func (a *Action) Print(c *Context) error {
 	git := &Git{}
 	user := c.Users.TakeByURL(git.GetRemoteOriginURL())
 
-	temp := fasttemplate.New(c.Option.Print.Format, "(", ")")
+	temp := fasttemplate.New(c.Option.Print.Format, "{", "}")
 	temp.Execute(
 		a.printer.writer,
 		map[string]interface{}{
